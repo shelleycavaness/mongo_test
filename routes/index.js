@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 
 const router = express.Router();
 const passport = require('passport');
-const User = mongoose.model('Registration');
+// const User = mongoose.model('Registration');
+const jwt = require('jsonwebtoken');
+
+const User = mongoose.model('User')
 
 router.get('/', (req, res) => {
   res.send('It works!  http://localhost:3000/api');

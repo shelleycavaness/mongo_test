@@ -3,7 +3,8 @@ const express = require('express')
 require('./models/user_model');
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || "3000";
+// const port = 3000  
 const bodyParser = require('body-parser')
 const routes = require('./routes/index');
 const path = require('path');
@@ -12,7 +13,8 @@ require('dotenv').config();
 
 mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex:true //added to get rid of DeprecationWarning
 });
 
 mongoose.connection
