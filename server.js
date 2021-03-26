@@ -4,6 +4,7 @@ require('./models/user_model');
 
 const app = express()
 const port = 3000
+const bodyParser = require('body-parser')
 const routes = require('./routes/index');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -22,7 +23,9 @@ mongoose.connection
     console.log(`Connection error: ${err.message}`);
   });
 
-
+// app.use(express.json());
+// parse application/json
+app.use(bodyParser.json())
 app.use('/', routes);
 
 
