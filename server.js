@@ -28,7 +28,7 @@ mongoose.connection
 // app.use(express.json());
 // parse application/json
 app.use(bodyParser.json())
-app.use('/', routes);
+app.use('/api', routes);
 
 
 

@@ -7,8 +7,10 @@ const router = express.Router();
 const passport = require('passport');
 // const User = mongoose.model('Registration');
 const jwt = require('jsonwebtoken');
-
+// const authenticateToken = require('../config/auth')
 const User = mongoose.model('User')
+
+
 
 router.get('/', (req, res) => {
   res.send('It works!  http://localhost:3000/api');
@@ -16,15 +18,14 @@ router.get('/', (req, res) => {
 
 router.post('/register', (req, res, next) => {
   let user = new User()   
-
+  console.log('111111111111', req.body);
   user.username = req.body.user.username;
   user.email = req.body.user.email;
-  // user.setPassword(req.body.user.passw);
+  console.log(`req.body.user.password===`, req.body.user.password)
+  user.setPassword(req.body.user.password);
 
-  // res.json( { "User": "req.body.user.username" });
-  console.log(req.body);
+  return res.json({user: user});
 
-  return res.json(req.body);
 });
 
 module.exports = router;
